@@ -11,7 +11,7 @@ public class BattleshipClient {
         newString[1] = "23";
         if (newString.length != 2) {
             System.err.println(
-                "Usage: java EchoClient <Battleship> <23>");
+                "Usage: Battleship <23>");
             System.exit(1);
         }
         String hostName = newString[0];
