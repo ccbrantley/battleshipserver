@@ -6,7 +6,7 @@ import java.net.*;
 public class BattleshipClient {
     public static void main(String[] args) throws IOException {
         String[] newString = new String[2];
-        newString[0] = "192.168.1.86";
+        newString[0] = "###.###.#.##";
         newString[1] = "23";
         if (newString.length != 2) {
             System.err.println(
