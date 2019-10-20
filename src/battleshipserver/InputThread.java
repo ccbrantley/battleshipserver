@@ -6,9 +6,6 @@
 package battleshipserver;
 
 import java.io.DataInputStream;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -29,8 +26,9 @@ public class InputThread implements Runnable {
             while((tempString = this.inputStream.readUTF()) != null) {
                 System.out.println(tempString);
             }
-        } catch (IOException ex) {
-            Logger.getLogger(InputThread.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            System.err.println(e.toString());
+            System.exit(1);
         }
     }
 }

@@ -2,19 +2,18 @@ package battleshipserver;
 
 import java.net.*;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ServerThread extends Thread{
 
     private Socket socket = null;
-    private final DataOutputStream thisOutput;
     private final DataInputStream thisInput;
+    private final DataOutputStream thisOutput;
 
     private Socket pairedSocket;
-    private DataOutputStream pairedOutput;
     private DataInputStream pairedInput;
+    private DataOutputStream pairedOutput;
 
     private boolean isPaired = false;
 
@@ -25,14 +24,11 @@ public class ServerThread extends Thread{
         this.thisOutput = new DataOutputStream(this.socket.getOutputStream());
         this.thisInput = new DataInputStream(this.socket.getInputStream());
     }
-    public boolean multiplayerStatus () {
-        return this.isPaired;
-    }
 
     @Override
     public void run() {
         while(true){
-            if (this.multiplayerStatus() == true){
+            if (this.isPaired){
                 String tempString;
                 if(null != (tempString = this.readInputStream(thisInput))) {
                     this.writeOutputStream(this.pairedOutput, tempString);
@@ -74,6 +70,11 @@ public class ServerThread extends Thread{
     }
 
 //*********************** GETTERS **********************
+
+    public boolean getMultiplayerStatus () {
+        return this.isPaired;
+    }
+
 //*********************** SETTERS **********************
 
     public void setPairedThread(ServerThread _pairedThread) throws IOException {
@@ -83,5 +84,4 @@ public class ServerThread extends Thread{
         this.isPaired = true;
         this.writeOutputStream(this.thisOutput, "Connected");
     }
-
 }

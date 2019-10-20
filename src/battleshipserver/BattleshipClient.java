@@ -6,7 +6,8 @@ import java.net.*;
 public class BattleshipClient {
     public static void main(String[] args) throws IOException {
         String[] newString = new String[2];
-        newString[0] = "192.168.1.86";
+        // Put IP in newString[0]
+        newString[0] = "###.###.#.##";
         newString[1] = "23";
         if (newString.length != 2) {
             System.err.println(
@@ -16,11 +17,11 @@ public class BattleshipClient {
         String hostName = newString[0];
         int portNumber = Integer.parseInt(newString[1]);
      try (
-            Socket echoSocket = new Socket(hostName, portNumber);
+            Socket clientSocket = new Socket(hostName, portNumber);
             DataOutputStream out =
-                new DataOutputStream(echoSocket.getOutputStream());
+                new DataOutputStream(clientSocket.getOutputStream());
             DataInputStream in =
-                new DataInputStream(echoSocket.getInputStream());
+                new DataInputStream(clientSocket.getInputStream());
             BufferedReader stdIn =
                 new BufferedReader(
                     new InputStreamReader(System.in))
@@ -32,13 +33,9 @@ public class BattleshipClient {
                  out.writeUTF(tempString);
              }
          } while (true);
-     } catch (UnknownHostException e) {
-         System.err.println("Don't know about host " + hostName);
-         System.exit(1);
-     } catch (IOException e) {
-         System.err.println("Couldn't get I/O for the connection to " + hostName);
+     } catch (Exception e) {
+         System.err.println(e.toString());
          System.exit(1);
      }
-     System.out.println("do we ever exit program in here");
     }
 }

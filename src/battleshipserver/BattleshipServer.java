@@ -32,19 +32,19 @@ public class BattleshipServer {
                     int curThreadIndex = serverThreads.size()-1;
                     ServerThread lastThread = serverThreads.get(lastThreadIndex);
                     ServerThread curThread = serverThreads.get(curThreadIndex);
-                    if(lastThread.multiplayerStatus() == false && curThread.multiplayerStatus() == false) {
+                    if(lastThread.getMultiplayerStatus() == false && curThread.getMultiplayerStatus() == false) {
                         lastThread.setPairedThread(curThread);
                         curThread.setPairedThread(lastThread);
                     }
                 }
                 System.out.println("Active Count: " + (ServerThread.activeCount()-1));
                 serverThreads.forEach((ServerThread child) -> {
-                    System.out.println("Paired Status: " + child.multiplayerStatus());
+                    System.out.println("Paired Status: " + child.getMultiplayerStatus());
                 });
             }
-        } catch (IOException e) {
-            System.err.println("Could not listen on port " + portNumber);
-            System.exit(-1);
+        } catch (Exception e) {
+            System.err.println(e.toString());
+            System.exit(1);
         }
     }
 }
