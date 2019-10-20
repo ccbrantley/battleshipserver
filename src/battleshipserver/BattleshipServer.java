@@ -1,5 +1,10 @@
 package battleshipserver;
 
+/**
+ * @author Christopher Brantley
+ * @email ccbrantley@gtcc.edu
+ * Last Updated : 10/20/2019
+ */
 
 import java.net.*;
 import java.io.*;

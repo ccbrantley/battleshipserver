@@ -1,16 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package battleshipserver;
+
+/**
+ * @author Christopher Brantley
+ * @email ccbrantley@gtcc.edu
+ * Last Updated : 10/20/2019
+ */
 
 import java.io.DataInputStream;
 
-/**
- *
- * @author chris
- */
 public class InputThread implements Runnable {
 
     public InputThread(DataInputStream _inputStream) {
