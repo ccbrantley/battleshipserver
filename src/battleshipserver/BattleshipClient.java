@@ -13,7 +13,7 @@ public class BattleshipClient {
     public static void main(String[] args) throws IOException {
         String[] newString = new String[2];
         // Put IP in newString[0]
-        newString[0] = "###.###.#.##";
+        newString[0] = "152.13.79.210";
         newString[1] = "23";
         if (newString.length != 2) {
             System.err.println("Usage: Battleship <23>");

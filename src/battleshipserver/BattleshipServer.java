@@ -1,4 +1,4 @@
-package battleshipserver;
+package battleshipserver;  
 
 /**
  * @author Christopher Brantley
